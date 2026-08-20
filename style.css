@@ -106,17 +106,24 @@ img{ max-width: 100%; display:block; }
 /* =========================================================
    MOTION — scroll reveals + word-mask hero reveal
    ========================================================= */
-.reveal{
+/* Fail-safe default: content is visible even if JS never runs or errors.
+   Only once html.js-anim-ready is set (first line of script.js, unconditional)
+   do these get hidden pending their reveal animation — pure progressive
+   enhancement, so a script failure can never leave content stuck invisible. */
+.reveal{ opacity: 1; transform: none; }
+.reveal-stagger > *{ opacity: 1; transform: none; }
+
+html.js-anim-ready .reveal{
   opacity: 0; transform: translateY(28px);
   transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1);
 }
-.reveal.in-view{ opacity: 1; transform: translateY(0); }
+html.js-anim-ready .reveal.in-view{ opacity: 1; transform: translateY(0); }
 
-.reveal-stagger > *{
+html.js-anim-ready .reveal-stagger > *{
   opacity: 0; transform: translateY(22px);
   transition: opacity 0.6s cubic-bezier(.2,.7,.2,1), transform 0.6s cubic-bezier(.2,.7,.2,1);
 }
-.reveal-stagger.in-view > *{ opacity: 1; transform: translateY(0); }
+html.js-anim-ready .reveal-stagger.in-view > *{ opacity: 1; transform: translateY(0); }
 .reveal-stagger.in-view > *:nth-child(1){ transition-delay: 0.05s; }
 .reveal-stagger.in-view > *:nth-child(2){ transition-delay: 0.14s; }
 .reveal-stagger.in-view > *:nth-child(3){ transition-delay: 0.23s; }
@@ -513,6 +520,13 @@ section{ padding: 110px clamp(20px, 5vw, 64px); max-width: var(--container); mar
 .reel-code{ font-size: 11px; color: var(--gold-bright); letter-spacing: var(--tracking-widest); }
 .reel-meta h3{ font-size: 15px; margin-top: 4px; font-weight: 600; letter-spacing: var(--tracking-snug); }
 .reel-tag{ font-size: 12px; color: var(--muted); letter-spacing: var(--tracking-wide); }
+
+/* Landscape (16:9) card variant — wider than the standard vertical reel card */
+.reel-card-landscape{ width: 380px; }
+.reel-card-landscape .reel-media{ aspect-ratio: 16/9; }
+@media (max-width: 480px){
+  .reel-card-landscape{ width: 300px; }
+}
 .reel-external-link{
   display: inline-block;
   margin-top: 6px;

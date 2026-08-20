@@ -20,9 +20,9 @@ Swap any of these three files (keep the same filename) if you want to
 change the photo later — no HTML/CSS edits needed, the containers auto-crop
 to the right shape via `object-fit: cover`.
 
-## 2. Add your 10 videos
+## 2. Add your videos
 
-The Work section is split into six category blocks, each its own
+The Work section is split into seven category blocks, each its own
 `<div class="work-category" id="cat-...">` in `index.html`:
 
 | Category | Anchor id | Slots currently set up |
@@ -31,13 +31,20 @@ The Work section is split into six category blocks, each its own
 | Motion Graphics | `#cat-motion` | R_003, R_004 |
 | Cinematic | `#cat-cinematic` | R_005, R_006 |
 | Long Form | `#cat-longform` | R_007 |
-| Shorts | `#cat-shorts` | R_008, R_009 |
+| Shorts | `#cat-shorts` | R_008, R_009 (both live YouTube embeds already) |
 | Others | `#cat-others` | R_010 |
+| Landscape | `#cat-landscape` | R_011 |
 
-For each slot, replace in `assets/`:
-- `reel-N.mp4` → your actual edited clip (vertical 9:16 works best for the
-  card shape; keep each under ~15MB so the page loads fast — export a
-  compressed preview, not your master file)
+**Landscape is different from the rest** — every other category uses a
+vertical 9:16 card (`reel-card`). Landscape cards use `reel-card-landscape`
+instead, which renders 16:9 widescreen at 380px wide. Use this class for
+anything shot or composed horizontally (like AI motion graphics) instead of
+cropping it into a vertical card.
+
+For each local-file slot, replace in `assets/`:
+- `reel-N.mp4` → your actual edited clip (vertical 9:16 for standard cards,
+  16:9 for Landscape cards; keep each under ~15MB so the page loads fast —
+  export a compressed preview, not your master file)
 - `reel-N-poster.jpg` → a thumbnail frame for that clip
 - Update the `<h3>` title text next to each card to the real project name
 
