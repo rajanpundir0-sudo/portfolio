@@ -33,13 +33,31 @@ The Work section is split into seven category blocks, each its own
 | Long Form | `#cat-longform` | R_007 |
 | Shorts | `#cat-shorts` | R_008, R_009 (both live YouTube embeds already) |
 | Others | `#cat-others` | R_010 |
-| Landscape | `#cat-landscape` | R_011 |
+| Landscape | `#cat-landscape` | R_011 (AI Landscape, live), R_012–R_016 (Cinematic Landscape, "Coming Soon" placeholders) |
 
 **Landscape is different from the rest** — every other category uses a
 vertical 9:16 card (`reel-card`). Landscape cards use `reel-card-landscape`
 instead, which renders 16:9 widescreen at 380px wide. Use this class for
-anything shot or composed horizontally (like AI motion graphics) instead of
-cropping it into a vertical card.
+anything shot or composed horizontally (like AI motion graphics or
+cinematic footage) instead of cropping it into a vertical card.
+
+The Landscape category now has two rows: **AI Landscape** (R_011, already
+live) and **Cinematic Landscape** (R_012–R_016, currently "Coming Soon"
+placeholders — dashed border, no video). To fill one in once you have a
+clip: find its `<article class="reel-card reel-card-landscape
+reel-card-placeholder">` block and either
+
+- swap in a YouTube embed the same way as other cards — replace the
+  `<div class="reel-media reel-media-placeholder">...</div>` with
+  `<div class="reel-media reel-media-embed" data-yt-id="YOUR_VIDEO_ID"></div>`,
+  or
+- swap in a local file the same way as the vertical cards — a
+  `<video muted loop playsinline preload="none" poster="...">` block
+
+— then update the `<h3>` title and remove `reel-card-placeholder` from the
+`class` list so it stops using the dashed "coming soon" styling. Add more
+placeholder cards the same way (copy an existing one, bump the `R_0NN`
+number) if you end up with more than 5 cinematic landscape clips.
 
 For each local-file slot, replace in `assets/`:
 - `reel-N.mp4` → your actual edited clip (vertical 9:16 for standard cards,

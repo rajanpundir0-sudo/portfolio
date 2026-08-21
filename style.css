@@ -527,6 +527,26 @@ section{ padding: 110px clamp(20px, 5vw, 64px); max-width: var(--container); mar
 @media (max-width: 480px){
   .reel-card-landscape{ width: 300px; }
 }
+
+/* "Coming soon" placeholder cards — future videos not uploaded yet */
+.reel-media-placeholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  border: 1px dashed var(--gold-deep);
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+}
+.reel-card-placeholder:hover .reel-media-placeholder{ border-color: var(--gold); }
+.placeholder-label{
+  font-family: var(--display);
+  font-size: 15px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.reel-card-placeholder:hover .placeholder-label{ color: var(--gold-bright); }
 .reel-external-link{
   display: inline-block;
   margin-top: 6px;
