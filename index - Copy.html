@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajan Pundir — Video Editor Portfolio</title>
+<meta name="description" content="Rajan Pundir — video editor based in Dehradun, India. AI videos, motion graphics, cinematic edits, long form and shorts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Ambient drifting gradient background -->
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="bg-texture" aria-hidden="true"></div>
+
+<!-- Signature element: scroll-driven timeline ruler / playhead -->
+<div class="timeline-rail" aria-hidden="true">
+  <div class="timeline-track">
+    <div class="timeline-progress" id="timelineProgress"></div>
+    <div class="timeline-playhead" id="timelinePlayhead"></div>
+  </div>
+  <div class="timeline-code" id="timelineCode">00:00:00:00</div>
+</div>
+
+<nav class="nav">
+  <a href="#top" class="nav-mark">RP<span>.</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="#contact" class="nav-cta">Let's talk</a>
+    <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#process">Process</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-banner reveal" id="heroBanner">
+        <img src="assets/hero-banner.jpg" alt="Rajan Pundir — Video Editor, Visual Storyteller">
+      </div>
+      <p class="eyebrow mono hero-eyebrow">00:00:00:00 — INTRO</p>
+      <h1 class="hero-title">
+        <span class="line"><span class="word-mask"><span class="word">Cutting</span></span> <span class="word-mask"><span class="word">stories</span></span></span>
+        <span class="line"><span class="word-mask"><span class="word">that</span></span> <span class="word-mask"><span class="word"><em>hold</em></span></span> <span class="word-mask"><span class="word">attention.</span></span></span>
+      </h1>
+      <p class="hero-name">Rajan Pundir<span class="hero-role">Video Editor · Visual Storyteller</span></p>
+      <p class="hero-sub">
+        Based in Dehradun. Two years deep in timelines, trained at DSOM Dehradun —
+        editing reels, brand films and event stories that don't get scrolled past.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">Watch the showreel</a>
+        <a href="#contact" class="btn btn-ghost">Let's work together</a>
+      </div>
+      <div class="hero-stats reveal-stagger">
+        <div class="stat">
+          <span class="stat-num" data-count-to="2" data-suffix="+">0</span>
+          <span class="stat-label">Years cutting</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">DSOM</span>
+          <span class="stat-label">Trained, Dehradun</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count-to="50" data-suffix="+">0</span>
+          <span class="stat-label">Projects delivered</span>
+        </div>
+      </div>
+      <div class="services reveal-stagger">
+        <div class="service-item">
+          <div class="service-icon">🎬</div>
+          <h4>Video Editing</h4>
+          <p>Cinematic cuts that connect.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">🎨</div>
+          <h4>Color Grading</h4>
+          <p>Colors that set the mood.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">Ae</div>
+          <h4>Motion Graphics</h4>
+          <p>Animate ideas. Elevate stories.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">♪</div>
+          <h4>Sound Design</h4>
+          <p>Sound that brings life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-item">
+        <span>REELS &amp; SHORTS</span><span class="dot">•</span>
+        <span>BRAND FILMS</span><span class="dot">•</span>
+        <span>EVENT EDITS</span><span class="dot">•</span>
+        <span>COLOR GRADING</span><span class="dot">•</span>
+        <span>MOTION GRAPHICS</span><span class="dot">•</span>
+      </div>
+      <div class="ticker-item">
+        <span>REELS &amp; SHORTS</span><span class="dot">•</span>
+        <span>BRAND FILMS</span><span class="dot">•</span>
+        <span>EVENT EDITS</span><span class="dot">•</span>
+        <span>COLOR GRADING</span><span class="dot">•</span>
+        <span>MOTION GRAPHICS</span><span class="dot">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about reveal" id="about">
+    <p class="eyebrow mono">00:00:15:00 — ABOUT</p>
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="photo-frame">
+          <img src="assets/about-portrait.jpg" alt="Portrait of Rajan Pundir" id="profileImg">
+        </div>
+        <p class="photo-caption mono">DEHRADUN, INDIA</p>
+      </div>
+      <div class="about-copy">
+        <h2>Based in the hills. Editing for screens everywhere.</h2>
+        <p>
+          I grew up and trained in Dehradun — my editing foundations were built at
+          <strong>DSOM (Dehradun School of Media)</strong>. For the last two years I've been
+          cutting short-form reels, wedding and event highlights, and brand videos for
+          clients who need footage turned into something people actually finish watching.
+        </p>
+        <p>
+          My approach: strong first-three-seconds hooks, pacing that matches the music,
+          and color that feels intentional rather than filtered. Every project starts with
+          the story, not the transitions.
+        </p>
+        <div class="tools reveal-stagger">
+          <span class="tool-chip">Premiere Pro</span>
+          <span class="tool-chip">DaVinci Resolve</span>
+          <span class="tool-chip">After Effects</span>
+          <span class="tool-chip">CapCut</span>
+          <span class="tool-chip">Color Grading</span>
+          <span class="tool-chip">Motion Graphics</span>
+        </div>
+        <div class="badge-row reveal-stagger">
+          <span class="badge-chip">Pr</span>
+          <span class="badge-chip">Ae</span>
+          <span class="badge-chip">Ps</span>
+          <span class="badge-chip">Lr</span>
+          <span class="badge-chip">Ai</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work reveal" id="work">
+    <p class="eyebrow mono">00:00:40:00 — SELECTED WORK</p>
+    <h2 class="section-title">The reel room</h2>
+    <p class="section-sub">Ten cuts across six domains. Jump to a category or scroll straight through.</p>
+
+    <div class="filter-row">
+      <a href="#cat-ai" class="filter-btn">AI Videos</a>
+      <a href="#cat-motion" class="filter-btn">Motion Graphics</a>
+      <a href="#cat-cinematic" class="filter-btn">Cinematic</a>
+      <a href="#cat-longform" class="filter-btn">Long Form</a>
+      <a href="#cat-shorts" class="filter-btn">Shorts</a>
+      <a href="#cat-others" class="filter-btn">Others</a>
+      <a href="#cat-landscape" class="filter-btn">Landscape</a>
+    </div>
+
+    <!-- AI VIDEOS -->
+    <div class="work-category" id="cat-ai">
+      <p class="eyebrow mono cat-eyebrow">00:00:42:00 — AI VIDEOS</p>
+      <div class="filmstrip reveal-stagger">
+        <article class="reel-card">
+          <div class="reel-media">
+            <video muted loop playsinline preload="none" poster="assets/reel-1-poster.jpg">
+              <source src="assets/reel-1.mp4" type="video/mp4">
+            </video>
+            <button class="reel-play" aria-label="Play preview">▶</button>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_001</span>
+            <h3>AI Generated Short</h3>
+            <span class="reel-tag">AI Videos</span>
+          </div>
+        </article>
+        <article class="reel-card">
+          <div class="reel-media">
+            <video muted loop playsinline preload="none" poster="assets/reel-2-poster.jpg">
+              <source src="assets/reel-2.mp4" type="video/mp4">
+            </video>
+            <button class="reel-play" aria-label="Play preview">▶</button>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_002</span>
+            <h3>AI Story Concept</h3>
+            <span class="reel-tag">AI Videos</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- MOTION GRAPHICS -->
+    <div class="work-category" id="cat-motion">
+      <p class="eyebrow mono cat-eyebrow">00:00:54:00 — MOTION GRAPHICS</p>
+      <div class="filmstrip reveal-stagger">
+        <article class="reel-card">
+          <div class="reel-media">
+            <video muted loop playsinline preload="none" poster="assets/reel-3-poster.jpg">
+              <source src="assets/reel-3.mp4" type="video/mp4">
+            </video>
+            <button class="reel-play" aria-label="Play preview">▶</button>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_003</span>
+            <h3>Logo Reveal Animation</h3>
+            <span class="reel-tag">Motion Graphics</span>
+          </div>
+        </article>
+        <article class="reel-card">
+          <div class="reel-media">
+            <video muted loop playsinline preload="none" poster="assets/reel-4-poster.jpg">
+              <source src="assets/reel-4.mp4" type="video/mp4">
+            </video>
+            <button class="reel-play" aria-label="Play preview">▶</button>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_004</span>
+            <h3>Kinetic Typography Promo</h3>
+            <span class="reel-tag">Motion Graphics</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- CINEMATIC -->
+    <div class="work-category" id="cat-cinematic">
+      <p class="eyebrow mono cat-eyebrow">00:01:06:00 — CINEMATIC</p>
+      <div class="filmstrip reveal-stagger">
+        <article class="reel-card">
+          <div class="reel-media reel-media-embed" data-yt-id="n55wyYfXRfc"></div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_005</span>
+            <h3>Travel Cinematic Film</h3>
+            <span class="reel-tag">Cinematic</span>
+            <a class="reel-external-link" href="https://youtube.com/shorts/n55wyYfXRfc" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </article>
+        <article class="reel-card">
+          <div class="reel-media">
+            <video muted loop playsinline preload="none" poster="assets/reel-6-poster.jpg">
+              <source src="assets/reel-6.mp4" type="video/mp4">
+            </video>
+            <button class="reel-play" aria-label="Play preview">▶</button>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_006</span>
+            <h3>Wedding Cinematic Teaser</h3>
+            <span class="reel-tag">Cinematic</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- LONG FORM -->
+    <div class="work-category" id="cat-longform">
+      <p class="eyebrow mono cat-eyebrow">00:01:18:00 — LONG FORM</p>
+      <div class="filmstrip reveal-stagger">
+        <article class="reel-card">
+          <div class="reel-media">
+            <video muted loop playsinline preload="none" poster="assets/reel-7-poster.jpg">
+              <source src="assets/reel-7.mp4" type="video/mp4">
+            </video>
+            <button class="reel-play" aria-label="Play preview">▶</button>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_007</span>
+            <h3>Documentary Style Edit</h3>
+            <span class="reel-tag">Long Form</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- SHORTS -->
+    <div class="work-category" id="cat-shorts">
+      <p class="eyebrow mono cat-eyebrow">00:01:30:00 — SHORTS</p>
+      <div class="filmstrip reveal-stagger">
+        <article class="reel-card">
+          <div class="reel-media reel-media-embed" data-yt-id="8mwl0wP3qfA"></div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_008</span>
+            <h3>YouTube Shorts Cut</h3>
+            <span class="reel-tag">Shorts</span>
+            <a class="reel-external-link" href="https://youtube.com/shorts/8mwl0wP3qfA" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </article>
+        <article class="reel-card">
+          <div class="reel-media reel-media-embed" data-yt-id="4klySVYCgIo"></div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_009</span>
+            <h3>YouTube Shorts Cut</h3>
+            <span class="reel-tag">Shorts</span>
+            <a class="reel-external-link" href="https://youtube.com/shorts/4klySVYCgIo" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </article>
+        <article class="reel-card">
+          <div class="reel-media reel-media-embed" data-yt-id="G6zgaTf7gCQ"></div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_017</span>
+            <h3>Model Based Video</h3>
+            <span class="reel-tag">Shorts</span>
+            <a class="reel-external-link" href="https://youtube.com/shorts/G6zgaTf7gCQ" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- OTHERS -->
+    <div class="work-category" id="cat-others">
+      <p class="eyebrow mono cat-eyebrow">00:01:42:00 — OTHERS</p>
+      <div class="filmstrip reveal-stagger">
+        <article class="reel-card">
+          <div class="reel-media reel-media-embed" data-yt-id="KelNzOPUKpI"></div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_010</span>
+            <h3>Podcast Highlight Clip</h3>
+            <span class="reel-tag">Others</span>
+            <a class="reel-external-link" href="https://youtube.com/shorts/KelNzOPUKpI" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- LANDSCAPE -->
+    <div class="work-category" id="cat-landscape">
+      <p class="eyebrow mono cat-eyebrow">00:01:48:00 — LANDSCAPE</p>
+      <p class="section-sub" style="margin-top:-4px; margin-bottom: 24px;">Widescreen cuts — AI motion graphics and anything shot or composed for a 16:9 frame.</p>
+      <div class="filmstrip filmstrip-landscape reveal-stagger">
+        <article class="reel-card reel-card-landscape">
+          <div class="reel-media reel-media-embed" data-yt-id="GYeWpnEVvFA"></div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_011</span>
+            <h3>AI Landscape Motion Graphic</h3>
+            <span class="reel-tag">Landscape</span>
+            <a class="reel-external-link" href="https://youtu.be/GYeWpnEVvFA" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="eyebrow mono cat-eyebrow" style="margin-top:40px;">00:01:51:00 — CINEMATIC LANDSCAPE</p>
+      <div class="filmstrip filmstrip-landscape reveal-stagger">
+        <article class="reel-card reel-card-landscape">
+          <div class="reel-media reel-media-embed" data-yt-id="bPWSYQQ4V90"></div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_012</span>
+            <h3>Cinematic Landscape Film</h3>
+            <span class="reel-tag">Cinematic Landscape</span>
+            <a class="reel-external-link" href="https://youtu.be/bPWSYQQ4V90" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </article>
+        <article class="reel-card reel-card-landscape">
+          <div class="reel-media reel-media-embed" data-yt-id="cQ3bPPqXru0"></div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_013</span>
+            <h3>Cinematic Landscape Film</h3>
+            <span class="reel-tag">Cinematic Landscape</span>
+            <a class="reel-external-link" href="https://youtu.be/cQ3bPPqXru0" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </article>
+        <article class="reel-card reel-card-landscape reel-card-placeholder">
+          <div class="reel-media reel-media-placeholder">
+            <span class="placeholder-label">Coming Soon</span>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_014</span>
+            <h3>Coming Soon</h3>
+            <span class="reel-tag">Cinematic Landscape</span>
+          </div>
+        </article>
+        <article class="reel-card reel-card-landscape reel-card-placeholder">
+          <div class="reel-media reel-media-placeholder">
+            <span class="placeholder-label">Coming Soon</span>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_015</span>
+            <h3>Coming Soon</h3>
+            <span class="reel-tag">Cinematic Landscape</span>
+          </div>
+        </article>
+        <article class="reel-card reel-card-landscape reel-card-placeholder">
+          <div class="reel-media reel-media-placeholder">
+            <span class="placeholder-label">Coming Soon</span>
+          </div>
+          <div class="reel-meta">
+            <span class="reel-code mono">R_016</span>
+            <h3>Coming Soon</h3>
+            <span class="reel-tag">Cinematic Landscape</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process reveal" id="process">
+    <p class="eyebrow mono">00:01:55:00 — HOW I CUT</p>
+    <h2 class="section-title">From footage to final export</h2>
+    <div class="process-grid reveal-stagger">
+      <div class="process-step">
+        <span class="process-code mono">IN &nbsp;00:00</span>
+        <h3>Ingest &amp; select</h3>
+        <p>Sort the raw footage, sync audio, and pull the best takes before a single cut is made.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-code mono">CUT &nbsp;00:15</span>
+        <h3>Story assembly</h3>
+        <p>Build the rough cut around pacing and hook — the first three seconds earn the rest.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-code mono">GRADE &nbsp;00:32</span>
+        <h3>Color &amp; sound</h3>
+        <p>Grade for mood, mix audio levels, add motion graphics and captions where they help.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-code mono">OUT &nbsp;00:48</span>
+        <h3>Review &amp; export</h3>
+        <p>One revision round with you, then export in every format the platform needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING BANNER -->
+  <section class="closing-banner reveal">
+    <div class="closing-banner-frame">
+      <img src="assets/closing-banner.jpg" alt="Rajan Pundir — Video Editor. I don't just edit videos, I tell stories.">
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact reveal" id="contact">
+    <p class="eyebrow mono">00:02:10:00 — CONTACT</p>
+    <h2 class="contact-title">Got footage that needs<br>a good edit?</h2>
+    <p class="contact-sub">Send the brief, the raw files, or just the idea — I'll take it from there.</p>
+    <div class="contact-actions">
+      <a href="mailto:rajanpundir62@gmail.com" class="btn btn-primary">rajanpundir62@gmail.com</a>
+      <a href="https://www.instagram.com/_______ustaad?igsi=NXZweG41NHpoaGpq" class="btn btn-ghost" target="_blank" rel="noopener">Instagram</a>
+    </div>
+
+    <div class="contact-bar">
+      <div class="contact-bar-item">
+        <div class="contact-bar-icon">✉</div>
+        <div>
+          <div class="contact-bar-label">Email</div>
+          <div class="contact-bar-value"><a href="mailto:rajanpundir62@gmail.com">rajanpundir62@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-bar-item">
+        <div class="contact-bar-icon">📍</div>
+        <div>
+          <div class="contact-bar-label">Based in</div>
+          <div class="contact-bar-value">Dehradun, India</div>
+        </div>
+      </div>
+      <div class="contact-bar-item">
+        <div class="contact-bar-icon">➤</div>
+        <div>
+          <div class="contact-bar-label">Let's work together</div>
+          <div class="contact-bar-value">Have a project in mind?</div>
+        </div>
+      </div>
+      <div class="contact-bar-item">
+        <div>
+          <div class="contact-bar-label" style="margin-bottom:8px;">Follow</div>
+          <div class="social-row">
+            <a href="https://www.instagram.com/_______ustaad?igsi=NXZweG41NHpoaGpq" class="social-chip" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+            <a href="#" class="social-chip" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-chip" aria-label="YouTube">YT</a>
+            <a href="#" class="social-chip" aria-label="Behance">Be</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span class="mono">© <span id="year"></span> Rajan Pundir — Edited in Dehradun</span>
+  <span class="mono">Cut on Premiere Pro / DaVinci Resolve</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
