@@ -1,489 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rajan Pundir — Video Editor Portfolio</title>
-<meta name="description" content="Rajan Pundir — video editor based in Dehradun, India. AI videos, motion graphics, cinematic edits, long form and shorts.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+# Rajan Pundir — Video Editor Portfolio
 
-<!-- Ambient drifting gradient background -->
-<div class="bg-blobs" aria-hidden="true">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-</div>
-<div class="bg-texture" aria-hidden="true"></div>
+A single-page portfolio site. Pure HTML/CSS/JS — no build step, so it deploys
+straight to GitHub Pages for free.
 
-<!-- Signature element: scroll-driven timeline ruler / playhead -->
-<div class="timeline-rail" aria-hidden="true">
-  <div class="timeline-track">
-    <div class="timeline-progress" id="timelineProgress"></div>
-    <div class="timeline-playhead" id="timelinePlayhead"></div>
-  </div>
-  <div class="timeline-code" id="timelineCode">00:00:00:00</div>
-</div>
+## 1. Details already filled in
 
-<nav class="nav">
-  <a href="#top" class="nav-mark">RP<span>.</span></a>
-  <div class="nav-links" id="navLinks">
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="nav-right">
-    <a href="#contact" class="nav-cta">Let's talk</a>
-    <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-<div class="nav-mobile-menu" id="navMobileMenu">
-  <a href="#work">Work</a>
-  <a href="#about">About</a>
-  <a href="#process">Process</a>
-  <a href="#contact">Contact</a>
-</div>
+Name, email (rajanpundir62@gmail.com), phone (+91 99173 94750), and city
+(Dehradun) are already in `index.html` — in the hero, the About section,
+and the Contact section / contact bar. Update the social links (`#` hrefs
+in the `.social-row` near the bottom of the Contact section) to your real
+LinkedIn / Instagram / YouTube / Behance profiles when ready.
 
-<main id="top">
+Your "VIDEO EDITOR" banner photo is already placed in three spots:
+- `assets/hero-banner.jpg` — full banner, top of the page
+- `assets/about-portrait.jpg` — cropped to just you, no background text, in the About section
+- `assets/closing-banner.jpg` — full banner again, just before Contact
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grain" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <div class="hero-banner reveal" id="heroBanner">
-        <img src="assets/hero-banner.jpg" alt="Rajan Pundir — Video Editor, Visual Storyteller">
-      </div>
-      <p class="eyebrow mono hero-eyebrow">00:00:00:00 — INTRO</p>
-      <h1 class="hero-title">
-        <span class="line"><span class="word-mask"><span class="word">Cutting</span></span> <span class="word-mask"><span class="word">stories</span></span></span>
-        <span class="line"><span class="word-mask"><span class="word">that</span></span> <span class="word-mask"><span class="word"><em>hold</em></span></span> <span class="word-mask"><span class="word">attention.</span></span></span>
-      </h1>
-      <p class="hero-name">Rajan Pundir<span class="hero-role">Video Editor · Visual Storyteller</span></p>
-      <p class="hero-sub">
-        Based in Dehradun. Two years deep in timelines, trained at DSOM Dehradun —
-        editing reels, brand films and event stories that don't get scrolled past.
-      </p>
-      <div class="hero-actions">
-        <a href="#work" class="btn btn-primary">Watch the showreel</a>
-        <a href="#contact" class="btn btn-ghost">Let's work together</a>
-      </div>
-      <div class="hero-stats reveal-stagger">
-        <div class="stat">
-          <span class="stat-num" data-count-to="2" data-suffix="+">0</span>
-          <span class="stat-label">Years cutting</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">DSOM</span>
-          <span class="stat-label">Trained, Dehradun</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" data-count-to="50" data-suffix="+">0</span>
-          <span class="stat-label">Projects delivered</span>
-        </div>
-      </div>
-      <div class="services reveal-stagger">
-        <div class="service-item">
-          <div class="service-icon">🎬</div>
-          <h4>Video Editing</h4>
-          <p>Cinematic cuts that connect.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-icon">🎨</div>
-          <h4>Color Grading</h4>
-          <p>Colors that set the mood.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-icon">Ae</div>
-          <h4>Motion Graphics</h4>
-          <p>Animate ideas. Elevate stories.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-icon">♪</div>
-          <h4>Sound Design</h4>
-          <p>Sound that brings life.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+Swap any of these three files (keep the same filename) if you want to
+change the photo later — no HTML/CSS edits needed, the containers auto-crop
+to the right shape via `object-fit: cover`.
 
-  <!-- MARQUEE TICKER -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <div class="ticker-item">
-        <span>REELS &amp; SHORTS</span><span class="dot">•</span>
-        <span>BRAND FILMS</span><span class="dot">•</span>
-        <span>EVENT EDITS</span><span class="dot">•</span>
-        <span>COLOR GRADING</span><span class="dot">•</span>
-        <span>MOTION GRAPHICS</span><span class="dot">•</span>
-      </div>
-      <div class="ticker-item">
-        <span>REELS &amp; SHORTS</span><span class="dot">•</span>
-        <span>BRAND FILMS</span><span class="dot">•</span>
-        <span>EVENT EDITS</span><span class="dot">•</span>
-        <span>COLOR GRADING</span><span class="dot">•</span>
-        <span>MOTION GRAPHICS</span><span class="dot">•</span>
-      </div>
-    </div>
-  </div>
+## 2. Add your videos
 
-  <!-- ABOUT -->
-  <section class="about reveal" id="about">
-    <p class="eyebrow mono">00:00:15:00 — ABOUT</p>
-    <div class="about-grid">
-      <div class="about-photo">
-        <div class="photo-frame">
-          <img src="assets/about-portrait.jpg" alt="Portrait of Rajan Pundir" id="profileImg">
-        </div>
-        <p class="photo-caption mono">DEHRADUN, INDIA</p>
-      </div>
-      <div class="about-copy">
-        <h2>Based in the hills. Editing for screens everywhere.</h2>
-        <p>
-          I grew up and trained in Dehradun — my editing foundations were built at
-          <strong>DSOM (Dehradun School of Media)</strong>. For the last two years I've been
-          cutting short-form reels, wedding and event highlights, and brand videos for
-          clients who need footage turned into something people actually finish watching.
-        </p>
-        <p>
-          My approach: strong first-three-seconds hooks, pacing that matches the music,
-          and color that feels intentional rather than filtered. Every project starts with
-          the story, not the transitions.
-        </p>
-        <div class="tools reveal-stagger">
-          <span class="tool-chip">Premiere Pro</span>
-          <span class="tool-chip">DaVinci Resolve</span>
-          <span class="tool-chip">After Effects</span>
-          <span class="tool-chip">CapCut</span>
-          <span class="tool-chip">Color Grading</span>
-          <span class="tool-chip">Motion Graphics</span>
-        </div>
-        <div class="badge-row reveal-stagger">
-          <span class="badge-chip">Pr</span>
-          <span class="badge-chip">Ae</span>
-          <span class="badge-chip">Ps</span>
-          <span class="badge-chip">Lr</span>
-          <span class="badge-chip">Ai</span>
-        </div>
-      </div>
-    </div>
-  </section>
+The Work section is split into seven category blocks, each its own
+`<div class="work-category" id="cat-...">` in `index.html`:
 
-  <!-- WORK -->
-  <section class="work reveal" id="work">
-    <p class="eyebrow mono">00:00:40:00 — SELECTED WORK</p>
-    <h2 class="section-title">The reel room</h2>
-    <p class="section-sub">Ten cuts across six domains. Jump to a category or scroll straight through.</p>
+| Category | Anchor id | Slots currently set up |
+|---|---|---|
+| AI Videos | `#cat-ai` | R_001, R_002 |
+| Motion Graphics | `#cat-motion` | R_003, R_004 |
+| Cinematic | `#cat-cinematic` | R_005, R_006 |
+| Long Form | `#cat-longform` | R_007 |
+| Shorts | `#cat-shorts` | R_008, R_009 (both live YouTube embeds already) |
+| Others | `#cat-others` | R_010 |
+| Landscape | `#cat-landscape` | R_011 (AI Landscape, live), R_012–R_016 (Cinematic Landscape, "Coming Soon" placeholders) |
 
-    <div class="filter-row">
-      <a href="#cat-ai" class="filter-btn">AI Videos</a>
-      <a href="#cat-motion" class="filter-btn">Motion Graphics</a>
-      <a href="#cat-cinematic" class="filter-btn">Cinematic</a>
-      <a href="#cat-longform" class="filter-btn">Long Form</a>
-      <a href="#cat-shorts" class="filter-btn">Shorts</a>
-      <a href="#cat-others" class="filter-btn">Others</a>
-      <a href="#cat-landscape" class="filter-btn">Landscape</a>
-    </div>
+**Landscape is different from the rest** — every other category uses a
+vertical 9:16 card (`reel-card`). Landscape cards use `reel-card-landscape`
+instead, which renders 16:9 widescreen at 380px wide. Use this class for
+anything shot or composed horizontally (like AI motion graphics or
+cinematic footage) instead of cropping it into a vertical card.
 
-    <!-- AI VIDEOS -->
-    <div class="work-category" id="cat-ai">
-      <p class="eyebrow mono cat-eyebrow">00:00:42:00 — AI VIDEOS</p>
-      <div class="filmstrip reveal-stagger">
-        <article class="reel-card">
-          <div class="reel-media">
-            <video muted loop playsinline preload="none" poster="assets/reel-1-poster.jpg">
-              <source src="assets/reel-1.mp4" type="video/mp4">
-            </video>
-            <button class="reel-play" aria-label="Play preview">▶</button>
-          </div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_001</span>
-            <h3>AI Generated Short</h3>
-            <span class="reel-tag">AI Videos</span>
-          </div>
-        </article>
-        <article class="reel-card">
-          <div class="reel-media">
-            <video muted loop playsinline preload="none" poster="assets/reel-2-poster.jpg">
-              <source src="assets/reel-2.mp4" type="video/mp4">
-            </video>
-            <button class="reel-play" aria-label="Play preview">▶</button>
-          </div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_002</span>
-            <h3>AI Story Concept</h3>
-            <span class="reel-tag">AI Videos</span>
-          </div>
-        </article>
-      </div>
-    </div>
+The Landscape category now has two rows: **AI Landscape** (R_011, already
+live) and **Cinematic Landscape** (R_012–R_016, currently "Coming Soon"
+placeholders — dashed border, no video). To fill one in once you have a
+clip: find its `<article class="reel-card reel-card-landscape
+reel-card-placeholder">` block and either
 
-    <!-- MOTION GRAPHICS -->
-    <div class="work-category" id="cat-motion">
-      <p class="eyebrow mono cat-eyebrow">00:00:54:00 — MOTION GRAPHICS</p>
-      <div class="filmstrip reveal-stagger">
-        <article class="reel-card">
-          <div class="reel-media reel-media-embed" data-yt-id="v4ff-QnY-nA"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_003</span>
-            <h3>Logo Reveal Animation</h3>
-            <span class="reel-tag">Motion Graphics</span>
-            <a class="reel-external-link" href="https://youtube.com/shorts/v4ff-QnY-nA" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-      </div>
-    </div>
+- swap in a YouTube embed the same way as other cards — replace the
+  `<div class="reel-media reel-media-placeholder">...</div>` with
+  `<div class="reel-media reel-media-embed" data-yt-id="YOUR_VIDEO_ID"></div>`,
+  or
+- swap in a local file the same way as the vertical cards — a
+  `<video muted loop playsinline preload="none" poster="...">` block
 
-    <!-- CINEMATIC -->
-    <div class="work-category" id="cat-cinematic">
-      <p class="eyebrow mono cat-eyebrow">00:01:06:00 — CINEMATIC</p>
-      <div class="filmstrip reveal-stagger">
-        <article class="reel-card">
-          <div class="reel-media reel-media-embed" data-yt-id="n55wyYfXRfc"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_005</span>
-            <h3>Travel Cinematic Film</h3>
-            <span class="reel-tag">Cinematic</span>
-            <a class="reel-external-link" href="https://youtube.com/shorts/n55wyYfXRfc" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-      </div>
-    </div>
+— then update the `<h3>` title and remove `reel-card-placeholder` from the
+`class` list so it stops using the dashed "coming soon" styling. Add more
+placeholder cards the same way (copy an existing one, bump the `R_0NN`
+number) if you end up with more than 5 cinematic landscape clips.
 
-    <!-- LONG FORM -->
-    <div class="work-category" id="cat-longform">
-      <p class="eyebrow mono cat-eyebrow">00:01:18:00 — LONG FORM</p>
-      <div class="filmstrip reveal-stagger">
-        <article class="reel-card">
-          <div class="reel-media">
-            <video muted loop playsinline preload="none" poster="assets/reel-7-poster.jpg">
-              <source src="assets/reel-7.mp4" type="video/mp4">
-            </video>
-            <button class="reel-play" aria-label="Play preview">▶</button>
-          </div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_007</span>
-            <h3>Documentary Style Edit</h3>
-            <span class="reel-tag">Long Form</span>
-          </div>
-        </article>
-      </div>
-    </div>
+For each local-file slot, replace in `assets/`:
+- `reel-N.mp4` → your actual edited clip (vertical 9:16 for standard cards,
+  16:9 for Landscape cards; keep each under ~15MB so the page loads fast —
+  export a compressed preview, not your master file)
+- `reel-N-poster.jpg` → a thumbnail frame for that clip
+- Update the `<h3>` title text next to each card to the real project name
 
-    <!-- SHORTS -->
-    <div class="work-category" id="cat-shorts">
-      <p class="eyebrow mono cat-eyebrow">00:01:30:00 — SHORTS</p>
-      <div class="filmstrip reveal-stagger">
-        <article class="reel-card">
-          <div class="reel-media reel-media-embed" data-yt-id="8mwl0wP3qfA"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_008</span>
-            <h3>YouTube Shorts Cut</h3>
-            <span class="reel-tag">Shorts</span>
-            <a class="reel-external-link" href="https://youtube.com/shorts/8mwl0wP3qfA" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-        <article class="reel-card">
-          <div class="reel-media reel-media-embed" data-yt-id="4klySVYCgIo"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_009</span>
-            <h3>YouTube Shorts Cut</h3>
-            <span class="reel-tag">Shorts</span>
-            <a class="reel-external-link" href="https://youtube.com/shorts/4klySVYCgIo" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-        <article class="reel-card">
-          <div class="reel-media reel-media-embed" data-yt-id="G6zgaTf7gCQ"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_017</span>
-            <h3>Model Based Video</h3>
-            <span class="reel-tag">Shorts</span>
-            <a class="reel-external-link" href="https://youtube.com/shorts/G6zgaTf7gCQ" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-      </div>
-    </div>
+To add or remove clips, copy/paste a `<article class="reel-card">` block
+within the category's `.filmstrip` div, or move one to a different category
+block entirely. The number of slots per category doesn't need to stay 2-2-2-1-2-1 —
+rearrange freely.
 
-    <!-- OTHERS -->
-    <div class="work-category" id="cat-others">
-      <p class="eyebrow mono cat-eyebrow">00:01:42:00 — OTHERS</p>
-      <div class="filmstrip reveal-stagger">
-        <article class="reel-card">
-          <div class="reel-media reel-media-embed" data-yt-id="KelNzOPUKpI"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_010</span>
-            <h3>Podcast Highlight Clip</h3>
-            <span class="reel-tag">Others</span>
-            <a class="reel-external-link" href="https://youtube.com/shorts/KelNzOPUKpI" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-      </div>
-    </div>
+If a clip is hosted on YouTube instead of a local file, replace the whole
+`<video>...</video>` block with a single empty div carrying the video ID:
 
-    <!-- LANDSCAPE -->
-    <div class="work-category" id="cat-landscape">
-      <p class="eyebrow mono cat-eyebrow">00:01:48:00 — LANDSCAPE</p>
-      <p class="section-sub" style="margin-top:-4px; margin-bottom: 24px;">Widescreen cuts — AI motion graphics and anything shot or composed for a 16:9 frame.</p>
-      <div class="filmstrip filmstrip-landscape reveal-stagger">
-        <article class="reel-card reel-card-landscape">
-          <div class="reel-media reel-media-embed" data-yt-id="GYeWpnEVvFA"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_011</span>
-            <h3>AI Landscape Motion Graphic</h3>
-            <span class="reel-tag">Landscape</span>
-            <a class="reel-external-link" href="https://youtu.be/GYeWpnEVvFA" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-      </div>
+```html
+<div class="reel-media reel-media-embed" data-yt-id="YOUR_VIDEO_ID"></div>
+```
 
-      <p class="eyebrow mono cat-eyebrow" style="margin-top:40px;">00:01:51:00 — CINEMATIC LANDSCAPE</p>
-      <div class="filmstrip filmstrip-landscape reveal-stagger">
-        <article class="reel-card reel-card-landscape">
-          <div class="reel-media reel-media-embed" data-yt-id="bPWSYQQ4V90"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_012</span>
-            <h3>Cinematic Landscape Film</h3>
-            <span class="reel-tag">Cinematic Landscape</span>
-            <a class="reel-external-link" href="https://youtu.be/bPWSYQQ4V90" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-        <article class="reel-card reel-card-landscape">
-          <div class="reel-media reel-media-embed" data-yt-id="cQ3bPPqXru0"></div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_013</span>
-            <h3>Cinematic Landscape Film</h3>
-            <span class="reel-tag">Cinematic Landscape</span>
-            <a class="reel-external-link" href="https://youtu.be/cQ3bPPqXru0" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-          </div>
-        </article>
-        <article class="reel-card reel-card-landscape reel-card-placeholder">
-          <div class="reel-media reel-media-placeholder">
-            <span class="placeholder-label">Coming Soon</span>
-          </div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_014</span>
-            <h3>Coming Soon</h3>
-            <span class="reel-tag">Cinematic Landscape</span>
-          </div>
-        </article>
-        <article class="reel-card reel-card-landscape reel-card-placeholder">
-          <div class="reel-media reel-media-placeholder">
-            <span class="placeholder-label">Coming Soon</span>
-          </div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_015</span>
-            <h3>Coming Soon</h3>
-            <span class="reel-tag">Cinematic Landscape</span>
-          </div>
-        </article>
-        <article class="reel-card reel-card-landscape reel-card-placeholder">
-          <div class="reel-media reel-media-placeholder">
-            <span class="placeholder-label">Coming Soon</span>
-          </div>
-          <div class="reel-meta">
-            <span class="reel-code mono">R_016</span>
-            <h3>Coming Soon</h3>
-            <span class="reel-tag">Cinematic Landscape</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+(the video ID is the part after `watch?v=`, or after `/shorts/`, in the
+YouTube URL). The site's JavaScript handles the rest automatically —
+it loads the video only once that card scrolls into view, autoplays it
+muted and looped with the YouTube player UI hidden, and unloads it again
+once you scroll away (keeps the page fast even with several videos on it).
+A small "Watch on YouTube ↗" text link is worth adding under `<h3>` too,
+as a fallback for anyone whose browser blocks embedded players:
 
-  <!-- PROCESS -->
-  <section class="process reveal" id="process">
-    <p class="eyebrow mono">00:01:55:00 — HOW I CUT</p>
-    <h2 class="section-title">From footage to final export</h2>
-    <div class="process-grid reveal-stagger">
-      <div class="process-step">
-        <span class="process-code mono">IN &nbsp;00:00</span>
-        <h3>Ingest &amp; select</h3>
-        <p>Sort the raw footage, sync audio, and pull the best takes before a single cut is made.</p>
-      </div>
-      <div class="process-step">
-        <span class="process-code mono">CUT &nbsp;00:15</span>
-        <h3>Story assembly</h3>
-        <p>Build the rough cut around pacing and hook — the first three seconds earn the rest.</p>
-      </div>
-      <div class="process-step">
-        <span class="process-code mono">GRADE &nbsp;00:32</span>
-        <h3>Color &amp; sound</h3>
-        <p>Grade for mood, mix audio levels, add motion graphics and captions where they help.</p>
-      </div>
-      <div class="process-step">
-        <span class="process-code mono">OUT &nbsp;00:48</span>
-        <h3>Review &amp; export</h3>
-        <p>One revision round with you, then export in every format the platform needs.</p>
-      </div>
-    </div>
-  </section>
+```html
+<a class="reel-external-link" href="https://youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+```
 
-  <!-- CLOSING BANNER -->
-  <section class="closing-banner reveal">
-    <div class="closing-banner-frame">
-      <img src="assets/closing-banner.jpg" alt="Rajan Pundir — Video Editor. I don't just edit videos, I tell stories.">
-    </div>
-  </section>
+## 3. Mobile
 
-  <!-- CONTACT -->
-  <section class="contact reveal" id="contact">
-    <p class="eyebrow mono">00:02:10:00 — CONTACT</p>
-    <h2 class="contact-title">Got footage that needs<br>a good edit?</h2>
-    <p class="contact-sub">Send the brief, the raw files, or just the idea — I'll take it from there.</p>
-    <div class="contact-actions">
-      <a href="mailto:rajanpundir62@gmail.com" class="btn btn-primary">rajanpundir62@gmail.com</a>
-      <a href="https://www.instagram.com/_______ustaad?igsi=NXZweG41NHpoaGpq" class="btn btn-ghost" target="_blank" rel="noopener">Instagram</a>
-    </div>
+The site is fully responsive — a hamburger menu takes over navigation below
+720px wide, the About/Work/Process/Contact sections restack to single
+columns, and all three banner photos crop responsively via `object-fit`.
+Test locally by resizing your browser or using your browser's device
+toolbar (F12 → toggle device toolbar).
 
-    <div class="contact-bar">
-      <div class="contact-bar-item">
-        <div class="contact-bar-icon">✉</div>
-        <div>
-          <div class="contact-bar-label">Email</div>
-          <div class="contact-bar-value"><a href="mailto:rajanpundir62@gmail.com">rajanpundir62@gmail.com</a></div>
-        </div>
-      </div>
-      <div class="contact-bar-item">
-        <div class="contact-bar-icon">📍</div>
-        <div>
-          <div class="contact-bar-label">Based in</div>
-          <div class="contact-bar-value">Dehradun, India</div>
-        </div>
-      </div>
-      <div class="contact-bar-item">
-        <div class="contact-bar-icon">➤</div>
-        <div>
-          <div class="contact-bar-label">Let's work together</div>
-          <div class="contact-bar-value">Have a project in mind?</div>
-        </div>
-      </div>
-      <div class="contact-bar-item">
-        <div>
-          <div class="contact-bar-label" style="margin-bottom:8px;">Follow</div>
-          <div class="social-row">
-            <a href="https://www.instagram.com/_______ustaad?igsi=NXZweG41NHpoaGpq" class="social-chip" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
-            <a href="#" class="social-chip" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-chip" aria-label="YouTube">YT</a>
-            <a href="#" class="social-chip" aria-label="Behance">Be</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+## 4. Put it on GitHub
 
-</main>
+```bash
+git init
+git add .
+git commit -m "Portfolio site"
+git branch -M main
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+git push -u origin main
+```
 
-<footer class="footer">
-  <span class="mono">© <span id="year"></span> Rajan Pundir — Edited in Dehradun</span>
-  <span class="mono">Cut on Premiere Pro / DaVinci Resolve</span>
-</footer>
+## 5. Turn on GitHub Pages
 
-<script src="script.js"></script>
-</body>
-</html>
+1. On GitHub, open your repo → **Settings** → **Pages**
+2. Under "Build and deployment", set **Source** to `Deploy from a branch`
+3. Set **Branch** to `main` and folder to `/ (root)` → **Save**
+4. Wait ~1 minute, then your site is live at:
+   `https://<your-username>.github.io/<repo-name>/`
+
+To use your own domain later, add a `CNAME` file with your domain name and
+point your domain's DNS at GitHub's IPs (GitHub's Pages docs cover this).
+
+## 6. Updating later
+
+Any time you edit a file and run:
+
+```bash
+git add .
+git commit -m "Update portfolio"
+git push
+```
+
+...the live site updates automatically within a minute or two.
