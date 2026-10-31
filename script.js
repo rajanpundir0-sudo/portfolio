@@ -1,276 +1,133 @@
-// Mark that JS is running, before anything else. CSS only hides .reveal
-// elements pending animation once this class is present (see style.css) —
-// so if this line never executes (JS blocked entirely), content stays
-// visible by default instead of stuck invisible.
-document.documentElement.classList.add('js-anim-ready');
+# Rajan Pundir — Video Editor Portfolio
 
-// Each feature below is wrapped in its own try/catch. This is deliberate:
-// if one block throws (a missing element, a browser quirk, whatever), it
-// must not stop every feature declared after it in this file from running.
-// Previously the whole script was one top-to-bottom sequence, so a single
-// failure partway through could silently disable everything below it —
-// including the scroll-reveal system, which would leave entire sections
-// permanently invisible with no error the visitor could see.
+A single-page portfolio site. Pure HTML/CSS/JS — no build step, so it deploys
+straight to GitHub Pages for free.
 
-function safe(name, fn){
-  try { fn(); }
-  catch (err) { console.error(`[portfolio] "${name}" failed:`, err); }
-}
+## 1. Details already filled in
 
-// ---------- Mobile nav toggle ----------
-safe('mobile nav toggle', () => {
-  const navBurger = document.getElementById('navBurger');
-  const navMobileMenu = document.getElementById('navMobileMenu');
-  if (!navBurger || !navMobileMenu) return;
-  navBurger.addEventListener('click', () => {
-    const isOpen = navMobileMenu.classList.toggle('is-open');
-    navBurger.classList.toggle('is-open', isOpen);
-    navBurger.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
-  navMobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navMobileMenu.classList.remove('is-open');
-      navBurger.classList.remove('is-open');
-      navBurger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-  });
-});
+Name, email (rajanpundir62@gmail.com), phone (+91 99173 94750), and city
+(Dehradun) are already in `index.html` — in the hero, the About section,
+and the Contact section / contact bar. Update the social links (`#` hrefs
+in the `.social-row` near the bottom of the Contact section) to your real
+LinkedIn / Instagram / YouTube / Behance profiles when ready.
 
-// ---------- YouTube embeds: lazy-load + autoplay only while on screen ----------
-safe('YouTube embeds', () => {
-  const ytTargets = document.querySelectorAll('[data-yt-id]');
-  if (!ytTargets.length) return;
-  const buildSrc = (id) =>
-    `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}` +
-    `&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1&disablekb=1`;
+Your "VIDEO EDITOR" banner photo is already placed in three spots:
+- `assets/hero-banner.jpg` — full banner, top of the page
+- `assets/about-portrait.jpg` — cropped to just you, no background text, in the About section
+- `assets/closing-banner.jpg` — full banner again, just before Contact
 
-  const ytObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const el = entry.target;
-      const id = el.dataset.ytId;
-      if (entry.isIntersecting){
-        if (!el.querySelector('iframe')){
-          const iframe = document.createElement('iframe');
-          iframe.src = buildSrc(id);
-          iframe.title = 'Video preview';
-          iframe.setAttribute('frameborder', '0');
-          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-          iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-          iframe.allowFullscreen = true;
-          el.appendChild(iframe);
-        }
-      } else {
-        const existing = el.querySelector('iframe');
-        if (existing) existing.remove();
-      }
-    });
-  }, { threshold: 0.35, rootMargin: '200px 0px 200px 0px' });
+Swap any of these three files (keep the same filename) if you want to
+change the photo later — no HTML/CSS edits needed, the containers auto-crop
+to the right shape via `object-fit: cover`.
 
-  ytTargets.forEach(el => ytObserver.observe(el));
-});
+## 2. Add your videos
 
-// ---------- Footer year ----------
-safe('footer year', () => {
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-});
+The Work section is split into seven category blocks, each its own
+`<div class="work-category" id="cat-...">` in `index.html`:
 
-const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+| Category | Anchor id | Slots currently set up |
+|---|---|---|
+| AI Videos | `#cat-ai` | R_001, R_002 |
+| Motion Graphics | `#cat-motion` | R_003, R_004 |
+| Cinematic | `#cat-cinematic` | R_005, R_006 |
+| Long Form | `#cat-longform` | R_007 |
+| Shorts | `#cat-shorts` | R_008, R_009 (both live YouTube embeds already) |
+| Others | `#cat-others` | R_010 |
+| Landscape | `#cat-landscape` | R_011 (AI Landscape, live), R_012–R_016 (Cinematic Landscape, "Coming Soon" placeholders) |
 
-// ---------- Stagger the pre-marked-up word-mask reveals in the hero ----------
-// Words (and their <em> emphasis, where present) are already wrapped in
-// .word-mask > .word spans in the HTML, so natural kerning/letter-spacing
-// is never disturbed — this just staggers each word's reveal delay.
-safe('hero word stagger', () => {
-  document.querySelectorAll('.hero-title .line').forEach((line, lineIndex) => {
-    line.querySelectorAll('.word').forEach((word, wordIndex) => {
-      word.style.animationDelay = (lineIndex * 0.4 + wordIndex * 0.09) + 's';
-    });
-  });
-});
+**Landscape is different from the rest** — every other category uses a
+vertical 9:16 card (`reel-card`). Landscape cards use `reel-card-landscape`
+instead, which renders 16:9 widescreen at 380px wide. Use this class for
+anything shot or composed horizontally (like AI motion graphics or
+cinematic footage) instead of cropping it into a vertical card.
 
-// ---------- Custom cursor ----------
-safe('custom cursor', () => {
-  if (isTouch) return;
-  const dot = document.createElement('div');
-  dot.className = 'cursor-dot';
-  const ring = document.createElement('div');
-  ring.className = 'cursor-ring';
-  document.body.append(dot, ring);
+The Landscape category now has two rows: **AI Landscape** (R_011, already
+live) and **Cinematic Landscape** (R_012–R_016, currently "Coming Soon"
+placeholders — dashed border, no video). To fill one in once you have a
+clip: find its `<article class="reel-card reel-card-landscape
+reel-card-placeholder">` block and either
 
-  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-  window.addEventListener('mousemove', e => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top = mouseY + 'px';
-  });
+- swap in a YouTube embed the same way as other cards — replace the
+  `<div class="reel-media reel-media-placeholder">...</div>` with
+  `<div class="reel-media reel-media-embed" data-yt-id="YOUR_VIDEO_ID"></div>`,
+  or
+- swap in a local file the same way as the vertical cards — a
+  `<video muted loop playsinline preload="none" poster="...">` block
 
-  function animateRing(){
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.left = ringX + 'px';
-    ring.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
+— then update the `<h3>` title and remove `reel-card-placeholder` from the
+`class` list so it stops using the dashed "coming soon" styling. Add more
+placeholder cards the same way (copy an existing one, bump the `R_0NN`
+number) if you end up with more than 5 cinematic landscape clips.
 
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('is-active'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('is-active'));
-  });
-});
+For each local-file slot, replace in `assets/`:
+- `reel-N.mp4` → your actual edited clip (vertical 9:16 for standard cards,
+  16:9 for Landscape cards; keep each under ~15MB so the page loads fast —
+  export a compressed preview, not your master file)
+- `reel-N-poster.jpg` → a thumbnail frame for that clip
+- Update the `<h3>` title text next to each card to the real project name
 
-// ---------- Magnetic buttons ----------
-safe('magnetic buttons', () => {
-  if (isTouch) return;
-  document.querySelectorAll('.btn, .reel-play').forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const relX = e.clientX - rect.left - rect.width / 2;
-      const relY = e.clientY - rect.top - rect.height / 2;
-      el.style.transform = `translate(${relX * 0.25}px, ${relY * 0.25}px)`;
-    });
-    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-  });
-});
+To add or remove clips, copy/paste a `<article class="reel-card">` block
+within the category's `.filmstrip` div, or move one to a different category
+block entirely. The number of slots per category doesn't need to stay 2-2-2-1-2-1 —
+rearrange freely.
 
-// ---------- 3D tilt on reel cards ----------
-safe('card tilt', () => {
-  if (isTouch) return;
-  document.querySelectorAll('.reel-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `translateY(-8px) rotateX(${py * -10}deg) rotateY(${px * 10}deg)`;
-    });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-  });
-});
+If a clip is hosted on YouTube instead of a local file, replace the whole
+`<video>...</video>` block with a single empty div carrying the video ID:
 
-// ---------- Scroll reveals ----------
-// Belt-and-suspenders: the CSS default for .reveal/.reveal-stagger is
-// already visible (see style.css) — this only ADDS a nicer animated
-// entrance when it can. If the IntersectionObserver below fails for any
-// reason, or takes an element out of view before it fires, the safety
-// timeout further down force-reveals anything still unmarked so content
-// can never get stuck invisible.
-safe('scroll reveals', () => {
-  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-  revealEls.forEach(el => revealObserver.observe(el));
-});
+```html
+<div class="reel-media reel-media-embed" data-yt-id="YOUR_VIDEO_ID"></div>
+```
 
-// ---------- Reveal safety net ----------
-// Runs regardless of whether the block above succeeded. Anything that
-// still hasn't been revealed a couple seconds after load — for any
-// reason — gets force-revealed here so nothing stays permanently blank.
-safe('reveal safety net', () => {
-  setTimeout(() => {
-    document.querySelectorAll('.reveal:not(.in-view), .reveal-stagger:not(.in-view)')
-      .forEach(el => el.classList.add('in-view'));
-  }, 2000);
-});
+(the video ID is the part after `watch?v=`, or after `/shorts/`, in the
+YouTube URL). The site's JavaScript handles the rest automatically —
+it loads the video only once that card scrolls into view, autoplays it
+muted and looped with the YouTube player UI hidden, and unloads it again
+once you scroll away (keeps the page fast even with several videos on it).
+A small "Watch on YouTube ↗" text link is worth adding under `<h3>` too,
+as a fallback for anyone whose browser blocks embedded players:
 
-// ---------- Stat count-up ----------
-safe('stat count-up', () => {
-  const countEls = document.querySelectorAll('[data-count-to]');
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseFloat(el.dataset.countTo);
-      const suffix = el.dataset.suffix || '';
-      const duration = 900;
-      const start = performance.now();
-      function tick(now){
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(eased * target) + suffix;
-        if (progress < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-      countObserver.unobserve(el);
-    });
-  }, { threshold: 0.4 });
-  countEls.forEach(el => countObserver.observe(el));
-});
+```html
+<a class="reel-external-link" href="https://youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+```
 
-// ---------- Signature element: scroll-driven timecode rail ----------
-safe('timeline rail', () => {
-  const progressEl = document.getElementById('timelineProgress');
-  const playheadEl = document.getElementById('timelinePlayhead');
-  const codeEl = document.getElementById('timelineCode');
-  const heroBannerImg = document.querySelector('.hero-banner img');
-  if (!progressEl || !playheadEl || !codeEl) return;
+## 3. Mobile
 
-  function framesToTimecode(totalFrames){
-    const fps = 30;
-    const frames = Math.floor(totalFrames % fps);
-    const totalSeconds = Math.floor(totalFrames / fps);
-    const seconds = totalSeconds % 60;
-    const minutes = Math.floor(totalSeconds / 60) % 60;
-    const hours = Math.floor(totalSeconds / 3600);
-    const pad = n => String(n).padStart(2, '0');
-    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}:${pad(frames)}`;
-  }
+The site is fully responsive — a hamburger menu takes over navigation below
+720px wide, the About/Work/Process/Contact sections restack to single
+columns, and all three banner photos crop responsively via `object-fit`.
+Test locally by resizing your browser or using your browser's device
+toolbar (F12 → toggle device toolbar).
 
-  function updateTimeline(){
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-    progressEl.style.width = (pct * 100) + '%';
-    playheadEl.style.left = (pct * 100) + '%';
-    const totalFrames = Math.round(pct * 90 * 30);
-    codeEl.textContent = framesToTimecode(totalFrames);
+## 4. Put it on GitHub
 
-    if (heroBannerImg){
-      const shift = Math.min(scrollTop * 0.15, 60);
-      heroBannerImg.style.transform = `translateY(${shift}px) scale(1.06)`;
-    }
-  }
-  window.addEventListener('scroll', updateTimeline, { passive: true });
-  window.addEventListener('resize', updateTimeline);
-  updateTimeline();
-});
+```bash
+git init
+git add .
+git commit -m "Portfolio site"
+git branch -M main
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+git push -u origin main
+```
 
-// ---------- Category nav scroll-spy ----------
-safe('category scroll-spy', () => {
-  const filterLinks = document.querySelectorAll('.filter-btn');
-  const categorySections = document.querySelectorAll('.work-category');
-  if (!filterLinks.length || !categorySections.length) return;
-  const spyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        const id = entry.target.id;
-        filterLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-        });
-      }
-    });
-  }, { threshold: 0.3, rootMargin: '-100px 0px -50% 0px' });
-  categorySections.forEach(sec => spyObserver.observe(sec));
-});
+## 5. Turn on GitHub Pages
 
-// ---------- Reel preview play/pause on click ----------
-safe('reel play/pause', () => {
-  document.querySelectorAll('.reel-card').forEach(card => {
-    const video = card.querySelector('video');
-    const playBtn = card.querySelector('.reel-play');
-    if (!video || !playBtn) return;
-    playBtn.addEventListener('click', () => {
-      if (video.paused){ video.play(); playBtn.textContent = '❚❚'; }
-      else { video.pause(); playBtn.textContent = '▶'; }
-    });
-    video.addEventListener('ended', () => { playBtn.textContent = '▶'; });
-  });
-});
+1. On GitHub, open your repo → **Settings** → **Pages**
+2. Under "Build and deployment", set **Source** to `Deploy from a branch`
+3. Set **Branch** to `main` and folder to `/ (root)` → **Save**
+4. Wait ~1 minute, then your site is live at:
+   `https://<your-username>.github.io/<repo-name>/`
+
+To use your own domain later, add a `CNAME` file with your domain name and
+point your domain's DNS at GitHub's IPs (GitHub's Pages docs cover this).
+
+## 6. Updating later
+
+Any time you edit a file and run:
+
+```bash
+git add .
+git commit -m "Update portfolio"
+git push
+```
+
+...the live site updates automatically within a minute or two.
